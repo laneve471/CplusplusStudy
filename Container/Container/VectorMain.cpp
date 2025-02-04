@@ -29,5 +29,24 @@ int main()
 		cout << "v의 용량 : " << v.capacity() << "    v의 크기 : " << v.size() << endl;
 	}
 
+	// 벡터 초기화
+	vector<int> a(2, 0); // 크기 2를 0으로 초기화
+	vector<int> b = { 2, 0 };
+	for (int n : a) { cout << n << " "; } // 0 0
+	for (int n : b) { cout << n << " "; } // 2 0
+
+
+	// 범위 생성자
+	vector<int> v1 = { 10, 20, 30, 40, 50 };
+
+	// v1의 요소들을 벡터로 복사
+	vector<int> v2(v1.begin() + 1, v1.begin() + 3);
+
+	for (int v : v2) {cout << v << " ";} // 20 30
+	// 왜 20 30인가?
+	// new_vector(first_iterator, last_iterator);에서 [first, last)
+	// first는 포함하고 last는 포함하지 않는 범위
+	// 따라서 40은 포함되지 않음
+
 	return 0;
 }
