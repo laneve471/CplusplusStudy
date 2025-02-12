@@ -2,16 +2,16 @@
 #include "Archer.h"
 
 Archer::Archer(int hp, int atk, string name)
-: Player(hp, atk, name)
+	: Player(hp, atk, name)
 {
-	SetName(name);
 };
 
 Archer::~Archer() {};
 
-void Archer::Attack(Creature* other)
+void Archer::Attack(shared_ptr<Creature> other)
 {
-	cout << "Archer Attack" << endl;
-	other->TakeDamage(_atk, this);
-	GetDamageSum() += _atk;
+	if (IsDead()) return;
+
+	cout << _name << " Archer Attack" << endl;
+	other->TakeDamage(_atk, shared_from_this());
 };

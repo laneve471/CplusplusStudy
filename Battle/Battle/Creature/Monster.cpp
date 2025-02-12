@@ -6,4 +6,6 @@ Monster::Monster(int hp, int atk)
 {
 }
 
-Monster::~Monster() {}
+Monster::~Monster()
+{
+}

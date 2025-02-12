@@ -6,14 +6,11 @@ Creature::Creature(int hp, int atk)
 {
 }
 
-Creature::~Creature() {}
-
-void Creature::Attack(Creature* other)
+Creature::~Creature()
 {
-	other->TakeDamage(_atk, this);
 }
 
-void Creature::TakeDamage(int amount, Creature* ataccker)
+void Creature::TakeDamage(int amount, shared_ptr<Creature> attacker)
 {
 	_hp -= amount;
 

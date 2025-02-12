@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+
 #include "Monster.h"
 
 class Goblin : public Monster
@@ -9,6 +9,8 @@ public:
 	Goblin(int hp, int atk, string name);
 	~Goblin();
 
-	void Attack(Creature* other) override;
+	virtual void Attack(shared_ptr<Creature> other) override;
 	void DeadSound();
+
+private:
 };

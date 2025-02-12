@@ -1,20 +1,40 @@
 #pragma once
-#include "pch.h"
+
 #include "Monster.h"
-#include <vector>
+
+class Player;
+
+struct PlayerInfo
+{
+	weak_ptr<Player> player;
+	int totalDamage;
+
+	bool operator<(const PlayerInfo& other) const
+	{
+		if (totalDamage < other.totalDamage)
+			return true;
+		return false;
+	}
+
+	bool operator>(const PlayerInfo& other) const
+	{
+		if (totalDamage > other.totalDamage)
+			return true;
+		return false;
+	}
+};
 
 class Boss : public Monster
 {
 public:
 	Boss();
-	Boss(int hp, int atk, string name);
 	~Boss();
 
-	void Attack();
-	void DeadSound();
-	void TakeDamage(int amount, Creature* attack);
-	std::vector<Creature*> GetTarget();
+	void Attack(shared_ptr<Creature> other) override;
+	void AttackAggro();
+
+	virtual void TakeDamage(int damage, shared_ptr<Creature> attacker) override;
 
 private:
-	std::vector<Creature*> target;
+	vector<PlayerInfo> _aggroTable;
 };

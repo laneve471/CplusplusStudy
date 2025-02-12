@@ -4,11 +4,11 @@
 #include "Player.h"
 
 Player::Player(int hp, int atk, string name)
-	:Creature(hp, atk), _damageSum(10)
+	:Creature(hp, atk)
 {
-	_name = name;
+	SetName(name);
 }
 
-Player::~Player() {}
-
-int& Player::GetDamageSum() { return _damageSum; }
+Player::~Player()
+{
+}

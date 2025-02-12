@@ -16,7 +16,11 @@
 // 3. $(ProjectDir) -> »Æ¿Œ
 
 #include <iostream>
-
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+#include <string>
+#include <memory>
 
 using namespace std;
 

@@ -4,14 +4,14 @@
 Knight::Knight(int hp, int atk, string name)
 	: Player(hp, atk, name)
 {
-	SetName(name);
 };
 
 Knight::~Knight() {};
 
-void Knight::Attack(Creature* other)
+void Knight::Attack(shared_ptr<Creature> other)
 {
-	cout << "Knight Attack" << endl;
-	other->TakeDamage(_atk, this);
-	GetDamageSum() += _atk;
+	if (IsDead()) return;
+
+	cout << _name << " Knight Attack" << endl;
+	other->TakeDamage(_atk, shared_from_this());
 };
