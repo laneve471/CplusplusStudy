@@ -8,14 +8,23 @@ public:
 	void Update();
 	void Render(HDC hdc);
 
-	void SetPos(Vector pos) { _circle->SetCenter(pos); } // ¿ßƒ°∫§
-	void AddForce(Vector v); // πÊ«‚∫§
+	void SetPos(Vector pos) { _circle->SetCenter(pos); } // ¿ßƒ°∫§≈Õ
+	Vector GetPos() { return _circle->GetCenter(); }
 
-	bool isActive = false;
+	void SetActive(bool b) { _isActive = b; }
+	bool GetActive() { return _isActive; }
+
+	shared_ptr<CircleCollider> GetCollider() { return _circle; }
+
+	void Fire(Vector dir);
+	void AddVector(Vector v); // πÊ«‚∫§≈Õ
+
 
 private:
 	shared_ptr<CircleCollider> _circle;
 
-	float _ballSpeed = 3;
+	float _ballSpeed = 3.0f;
+	Vector _dir;
+	bool _isActive = false;
 };
 

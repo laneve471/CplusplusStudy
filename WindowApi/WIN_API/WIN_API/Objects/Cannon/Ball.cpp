@@ -12,25 +12,40 @@ Ball::~Ball()
 
 void Ball::Update()
 {
-	if (isActive == false) return;
+	if (_isActive == false) return;
 
 	_circle->Update();
 
-	if (_circle->GetCenter().x > WIN_WIDTH || _circle->GetCenter().x < 0
+	// 화면 밖으로 나가면 소멸
+	/*if (_circle->GetCenter().x > WIN_WIDTH || _circle->GetCenter().x < 0
 		|| _circle->GetCenter().y > WIN_HEIGHT || _circle->GetCenter().y < 0)
-		isActive = false;
+		isActive = false;*/
+
+	// 반사
+	Vector center = _circle->GetCenter();
+	if (center.x < 0 || center.x > WIN_WIDTH)
+		_dir.x *= -1;
+	if (center.y < 0 || center.y > WIN_HEIGHT)
+		_dir.y *= -1;
+
+	_circle->SetCenter(_circle->GetCenter() + _dir * _ballSpeed);
 }
 
 void Ball::Render(HDC hdc)
 {
-	if (isActive == false) return;
+	if (_isActive == false) return;
 
 	_circle->Render(hdc);
 }
 
-void Ball::AddForce(Vector v)
+void Ball::Fire(Vector dir)
 {
-	if (isActive == false) return;
+	_dir = dir.NormalVector();
+}
+
+void Ball::AddVector(Vector v)
+{
+	if (_isActive == false) return;
 
 	_circle->SetCenter(_circle->GetCenter() + v);
 }

@@ -7,13 +7,21 @@
 #include "Scene/LineCollisionScene.h"
 #include "Scene/CannonScene.h"
 
+HDC Program::backBuffer = nullptr;
 Program::Program()
 {
 	_scene = make_shared<CannonScene>();
+
+	HDC hdc = GetDC(hWnd);
+
+	backBuffer = CreateCompatibleDC(hdc);
+	_hBitMap = CreateCompatibleBitmap(hdc, WIN_WIDTH, WIN_HEIGHT);
+	SelectObject(backBuffer, _hBitMap);
 }
 
 Program::~Program()
-{}
+{
+}
 
 void Program::Update()
 {
@@ -22,5 +30,9 @@ void Program::Update()
 
 void Program::Render(HDC hdc)
 {
-	_scene->Render(hdc);
+	PatBlt(backBuffer, 0, 0, WIN_WIDTH, WIN_HEIGHT, BLACKNESS);
+
+	_scene->Render(backBuffer);
+
+	BitBlt(hdc, 0, 0, WIN_WIDTH, WIN_HEIGHT, backBuffer, 0, 0, SRCCOPY);
 }

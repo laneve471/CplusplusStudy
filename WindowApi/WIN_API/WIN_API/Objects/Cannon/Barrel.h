@@ -12,11 +12,11 @@ public:
 	void Update();
 	void Render(HDC hdc);
 
-	void SetDirection(Vector dir) { _barrelDir = dir.NormalVector(); }
-	void SetAngle(float angle) { _angle = angle; }
-
 	Vector GetDir() { return _barrelDir; }
+	void SetDir(Vector dir) { _barrelDir = dir.NormalVector(); }
+
 	float GetAngle() { return _angle; }
+	void SetAngle(float angle) { _angle = angle; }
 
 	Vector GetMuzzle() { return _barrel->end; }
 
