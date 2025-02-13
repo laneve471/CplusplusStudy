@@ -19,7 +19,6 @@ public:
 	void Fire(Vector dir);
 	void AddVector(Vector v); // πÊ«‚∫§≈Õ
 
-
 private:
 	shared_ptr<CircleCollider> _circle;
 

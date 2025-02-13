@@ -16,3 +16,8 @@
 #define BLUE			 RGB(0, 0, 255)
 #define WHITE			 RGB(255, 255, 255)
 #define BLACK			 RGB(0, 0, 0)
+
+// ALKANOID MAP
+#define ALKA_MAP_LEFT 400
+#define ALKA_MAP_RIGHT 1000
+#define ALKA_MAP_TOP 100
