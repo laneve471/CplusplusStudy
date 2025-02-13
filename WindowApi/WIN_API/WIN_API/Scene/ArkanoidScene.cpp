@@ -5,12 +5,15 @@
 #include "Objects/Arkanoid/ArkaBall.h"
 #include "Objects/Arkanoid/Brick.h"
 #include "Objects/Arkanoid/Vaus.h"
+#include "Objects/Arkanoid/HpBar.h"
 
 ArkanoidScene::ArkanoidScene()
 {
 	_map = make_shared<Map>();
 	_vaus = make_shared<Vaus>();
 	_ball = make_shared<ArkaBall>();
+
+	_ui_hpBar = make_shared<HpBar>(Vector(700, 670), Vector(500, 20));
 
 	_map->SetCount(_life);
 }
@@ -22,6 +25,8 @@ ArkanoidScene::~ArkanoidScene()
 void ArkanoidScene::Update()
 {
 	_map->Update();
+	_ui_hpBar->Update();
+	_ui_hpBar->SetValue(_hp);
 
 	_vaus->Update();
 
@@ -47,6 +52,8 @@ void ArkanoidScene::Render(HDC hdc)
 	_map->Render(hdc);
 	_vaus->Render(hdc);
 	_ball->Render(hdc);
+
+	_ui_hpBar->Render(hdc); // UI는 항상 마지막에
 }
 
 void ArkanoidScene::KeyInput()
@@ -82,6 +89,8 @@ void ArkanoidScene::IsFall()
 
 		_life--;
 		_map->SetCount(_life);
+
+		_hp -= 0.2f;
 	}
 }
 
@@ -113,8 +122,10 @@ void ArkanoidScene::IsDead()
 			}
 		}
 
-		_life = 3;
+		_life = 5;
 		_map->SetCount(_life);
+
+		_hp = 1.0f;
 	}
 }
 

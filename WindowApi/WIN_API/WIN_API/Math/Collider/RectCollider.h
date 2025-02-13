@@ -9,7 +9,14 @@ public:
 	void Update();
 	void Render(HDC hdc);
 
+	Vector GetSize() { return _halfSize * 2; }
+	void SetSize(Vector size) {
+		_halfSize.x = size.x / 2;
+		_halfSize.y = size.y / 2;
+	}
+
 	Vector GetHalfSize() { return _halfSize; }
+	void SetHalfSize(Vector halfSize) { _halfSize = halfSize; }
 
 	bool IsCollision(const Vector& pos);
 	bool IsCollision(shared_ptr<Collider> other);

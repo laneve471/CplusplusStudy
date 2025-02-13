@@ -3,6 +3,7 @@
 class Map;
 class Vaus;
 class ArkaBall;
+class HpBar;
 
 class ArkanoidScene : public Scene
 {
@@ -25,6 +26,9 @@ private:
 	shared_ptr<Vaus> _vaus;
 	shared_ptr<ArkaBall> _ball;
 
-	int _life = 3;
+	shared_ptr<class HpBar> _ui_hpBar;
+
+	int _life = 5; // 원 모양 생명 표시
+	float _hp = 1.0f; // 체력바
 };
 

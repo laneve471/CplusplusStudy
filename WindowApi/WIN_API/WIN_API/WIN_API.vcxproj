@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Arkanoid\HpBar.h" />
     <ClInclude Include="Scene\ArkanoidScene.h" />
     <ClInclude Include="Objects\Arkanoid\ArkaBall.h" />
     <ClInclude Include="Objects\Arkanoid\Brick.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="WIN_API.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\Arkanoid\HpBar.cpp" />
     <ClCompile Include="Scene\ArkanoidScene.cpp" />
     <ClCompile Include="Objects\Arkanoid\ArkaBall.cpp" />
     <ClCompile Include="Objects\Arkanoid\Brick.cpp" />
