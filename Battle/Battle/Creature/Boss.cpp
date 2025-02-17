@@ -3,7 +3,7 @@
 #include "Player.h"
 
 Boss::Boss()
-	: Monster(300, 5)
+	: Monster(300, 20)
 {
 }
 

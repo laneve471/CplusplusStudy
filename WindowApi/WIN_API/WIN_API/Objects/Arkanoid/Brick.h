@@ -1,7 +1,5 @@
 #pragma once
 
-class Item;
-
 class Brick : public RectCollider
 {
 public:
@@ -12,10 +10,9 @@ public:
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
 
-	bool isActive = true;
+	bool GetActive() { return _isActive; }
+	void SetActive(bool active) { _isActive = active; }
 
 private:
-	HBRUSH _brush;
-
-	shared_ptr<Item> _item;
+	bool _isActive = false;
 };

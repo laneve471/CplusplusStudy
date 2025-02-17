@@ -1,16 +1,20 @@
 #include "framework.h"
 #include "HpBar.h"
 
+#include "Map.h"
+
 HpBar::HpBar(Vector center, Vector size)
 	: RectCollider(center, size)
 {
 	_value = make_shared<RectCollider>(center, size);
 	_redBrush = CreateSolidBrush(RED);
-	_oldBrush = CreateSolidBrush(WHITE);
+	_defaultBrush = CreateSolidBrush(WHITE);
 }
 
 HpBar::~HpBar()
 {
+	DeleteObject(_redBrush);
+	DeleteObject(_defaultBrush);
 }
 
 void HpBar::Update()
@@ -25,7 +29,7 @@ void HpBar::Render(HDC hdc)
 
 	SelectObject(hdc, _redBrush);
 	_value->Render(hdc);
-	SelectObject(hdc, _oldBrush);
+	SelectObject(hdc, _defaultBrush);
 }
 
 void HpBar::SetValue(float value)
@@ -36,4 +40,3 @@ void HpBar::SetValue(float value)
 	float centerY = GetCenter().y;
 	_value->SetCenter(Vector(centerX, centerY));
 }
-//TODO : hp system

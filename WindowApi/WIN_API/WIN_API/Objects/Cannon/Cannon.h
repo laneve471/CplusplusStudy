@@ -27,9 +27,6 @@ private:
 	// 2. 유니티 핵심요소, 언리얼 중요요소(상속, 컴포넌트)
 	shared_ptr<Barrel>			_barrel;
 
-	float _delay = 0.0f;
-	const float _attackSpeed = 3.0f;
-
 	// 오브젝트 풀링(변수지를 만드는 것)
 	// 동적할당 커널
 	// 할당 - 해제를 최소화 하기 위해서
@@ -37,6 +34,8 @@ private:
 	UINT						_poolCount;
 	vector<shared_ptr<Ball>>	_balls;
 
+	float						_delay = 0.0f;
+	const float					_attackSpeed = 3.0f;
 	float						_speed;
 	bool _isActive = true;
 };

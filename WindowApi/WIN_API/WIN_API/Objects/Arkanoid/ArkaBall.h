@@ -6,25 +6,34 @@ class Vaus;
 class ArkaBall : public CircleCollider
 {
 public:
-	ArkaBall();
+	friend class Vaus;
+
+	ArkaBall(shared_ptr<Vaus> vaus);
 	~ArkaBall();
 
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
 
+	void Reset();
 	void Fire();
+	void Reflection();
 
-	void ReflectByBrick(shared_ptr<Brick>& brick);
-	void ReflectByVaus(shared_ptr<Vaus> vaus);
-	void ReflectByWall();
+	Vector GetDir() { return _dir; }
+	void SetDir(Vector dir) { _dir = dir; }
 
-	Vector& GetDir() { return _dir; }
+	bool GetActive() { return _isActive; }
+	void SetActive(bool active) { _isActive = active; }
+	
+	bool GetFired() { return _isFired; }
+	void SetFired(bool active) { _isFired = active; }
 
-	bool isActive = false;
 private:
-	HBRUSH _brush;
+	weak_ptr<Vaus> _vaus;
 
 	Vector _dir;
+
+	float _speed = 3.0f;
+
+	bool _isActive = false;
+	bool _isFired = false;
 };
-
-

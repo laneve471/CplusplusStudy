@@ -22,8 +22,9 @@ public:
 private:
 	shared_ptr<CircleCollider> _circle;
 
-	float _ballSpeed = 3.0f;
 	Vector _dir;
+
+	float _ballSpeed = 3.0f;
 	bool _isActive = false;
 };
 

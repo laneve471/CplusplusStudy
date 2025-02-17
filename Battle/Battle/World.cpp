@@ -16,15 +16,15 @@ World::World()
 
 		if (randNum == 0)
 		{
-			_players.push_back(make_shared<Knight>(100, 10, "Knight"));
+			_players.push_back(make_shared<Knight>(100, 5, "Knight"));
 		}
 		else if (randNum == 1)
 		{
-			_players.push_back(make_shared<Archer>(100, 10, "Archer"));
+			_players.push_back(make_shared<Archer>(50, 10, "Archer"));
 		}
 		else
 		{
-			_players.push_back(make_shared<Mage>(100, 10, "Mage"));
+			_players.push_back(make_shared<Mage>(30, 15, "Mage"));
 		}
 	}
 }

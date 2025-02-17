@@ -15,6 +15,6 @@ private:
 	shared_ptr<RectCollider> _value;
 
 	HBRUSH _redBrush;
-	HBRUSH _oldBrush;
+	HBRUSH _defaultBrush;
 };
 
