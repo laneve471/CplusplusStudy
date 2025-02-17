@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Boss.h"
 #include "Player.h"
+#include "Creature.h"
 
 Boss::Boss()
 	: Monster(300, 20)
@@ -34,7 +35,7 @@ void Boss::AttackAggro() // 상위 누적 데미지 4명 공격
 	}
 
 	// 4명 초과인 경우 상위 4명 찾기
-	partial_sort(_aggroTable.begin(), _aggroTable.begin() + 4, _aggroTable.end());
+	partial_sort(_aggroTable.begin(), _aggroTable.begin() + 4, _aggroTable.end(), greater<PlayerInfo>());
 	for (int i = 0; i < 4; i++)
 	{
 		Attack(_aggroTable[i].player.lock());

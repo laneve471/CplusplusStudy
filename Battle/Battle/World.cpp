@@ -24,7 +24,7 @@ World::World()
 		}
 		else
 		{
-			_players.push_back(make_shared<Mage>(30, 15, "Mage"));
+			_players.push_back(make_shared<Mage>(30, 20, "Mage"));
 		}
 	}
 }
@@ -50,7 +50,10 @@ void World::Update()
 bool World::End()
 {
 	if (_boss->IsDead())
+	{
+		cout << "보스를 해치웠습니다!" << endl;
 		return true;
+	}
 
 	for (auto player : _players)
 	{
@@ -59,6 +62,6 @@ bool World::End()
 			return false;
 		}
 	}
-
-	return false;
+	cout << "전멸했습니다..." << endl;
+	return true;
 }
