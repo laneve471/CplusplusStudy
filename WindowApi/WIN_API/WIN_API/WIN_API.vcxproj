@@ -142,6 +142,8 @@
   <ItemGroup>
     <ClInclude Include="Objects\Arkanoid\Item.h" />
     <ClInclude Include="Objects\Arkanoid\HpBar.h" />
+    <ClInclude Include="Objects\Maze\Block.h" />
+    <ClInclude Include="Objects\Maze\Maze.h" />
     <ClInclude Include="Scene\ArkanoidScene.h" />
     <ClInclude Include="Objects\Arkanoid\ArkaBall.h" />
     <ClInclude Include="Objects\Arkanoid\Brick.h" />
@@ -159,6 +161,7 @@
     <ClInclude Include="Math\Collider\CircleCollider.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Math\Collider\RectCollider.h" />
+    <ClInclude Include="Scene\MazeScene.h" />
     <ClInclude Include="Scene\PaintScene.h" />
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Resource.h" />
@@ -171,6 +174,8 @@
   <ItemGroup>
     <ClCompile Include="Objects\Arkanoid\Item.cpp" />
     <ClCompile Include="Objects\Arkanoid\HpBar.cpp" />
+    <ClCompile Include="Objects\Maze\Block.cpp" />
+    <ClCompile Include="Objects\Maze\Maze.cpp" />
     <ClCompile Include="Scene\ArkanoidScene.cpp" />
     <ClCompile Include="Objects\Arkanoid\ArkaBall.cpp" />
     <ClCompile Include="Objects\Arkanoid\Brick.cpp" />
@@ -197,6 +202,7 @@
     </ClCompile>
     <ClCompile Include="Math\Vector.cpp" />
     <ClCompile Include="Math\Collider\RectCollider.cpp" />
+    <ClCompile Include="Scene\MazeScene.cpp" />
     <ClCompile Include="Scene\PaintScene.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
@@ -209,6 +215,9 @@
   <ItemGroup>
     <Image Include="small.ico" />
     <Image Include="WIN_API.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WIN_API.APS" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

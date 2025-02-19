@@ -32,6 +32,7 @@ Map::Map()
 
 Map::~Map()
 {
+	DeleteObject(_pen);
 }
 
 void Map::Init(shared_ptr<Vaus> vaus)

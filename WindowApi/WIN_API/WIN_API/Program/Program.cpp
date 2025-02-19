@@ -7,11 +7,12 @@
 #include "Scene/LineCollisionScene.h"
 #include "Scene/CannonScene.h"
 #include "Scene/ArkanoidScene.h"
+#include "Scene/MazeScene.h"
 
 HDC Program::backBuffer = nullptr;
 Program::Program()
 {
-	_scene = make_shared<ArkanoidScene>();
+	_scene = make_shared<MazeScene>();
 
 	HDC hdc = GetDC(hWnd);
 
