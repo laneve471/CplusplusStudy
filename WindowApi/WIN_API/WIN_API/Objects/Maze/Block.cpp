@@ -8,6 +8,12 @@ Block::Block()
 	_brushes.push_back(CreateSolidBrush(GREEN)); // ABLE
 	_brushes.push_back(CreateSolidBrush(RED)); // BLOCKED
 	_brushes.push_back(CreateSolidBrush(RGB(50, 150, 255))); // PLAYER
+	_brushes.push_back(CreateSolidBrush(RGB(50, 200, 255))); // FOOTPRINT
+	_brushes.push_back(CreateSolidBrush(RGB(50, 255, 255))); // SEARCHED
+
+	_pens.push_back(CreatePen(1, 3, RGB(50, 150, 255)));
+	_pens.push_back(CreatePen(1, 3, RGB(50, 200, 255)));
+	_pens.push_back(CreatePen(1, 3, RGB(50, 255, 255)));
 }
 
 Block::~Block()

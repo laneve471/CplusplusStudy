@@ -56,6 +56,19 @@ public:
 		return *this;
 	}
 
+	bool operator==(const Vector& other) const
+	{
+		if (x == other.x)
+		{
+			if (y == other.y)
+				return true;
+		}
+		return false;
+	}
+	bool operator!=(const Vector& other) const
+	{
+		return !this->operator==(other);
+	}
 
 	float Length() const
 	{

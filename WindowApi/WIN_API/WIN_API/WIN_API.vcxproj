@@ -144,6 +144,7 @@
     <ClInclude Include="Objects\Arkanoid\HpBar.h" />
     <ClInclude Include="Objects\Maze\Block.h" />
     <ClInclude Include="Objects\Maze\Maze.h" />
+    <ClInclude Include="Objects\Maze\Player.h" />
     <ClInclude Include="Scene\ArkanoidScene.h" />
     <ClInclude Include="Objects\Arkanoid\ArkaBall.h" />
     <ClInclude Include="Objects\Arkanoid\Brick.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Objects\Arkanoid\HpBar.cpp" />
     <ClCompile Include="Objects\Maze\Block.cpp" />
     <ClCompile Include="Objects\Maze\Maze.cpp" />
+    <ClCompile Include="Objects\Maze\Player.cpp" />
     <ClCompile Include="Scene\ArkanoidScene.cpp" />
     <ClCompile Include="Objects\Arkanoid\ArkaBall.cpp" />
     <ClCompile Include="Objects\Arkanoid\Brick.cpp" />
