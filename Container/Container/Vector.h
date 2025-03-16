@@ -42,7 +42,9 @@ public:
 	private:
 		T* _ptr;
 	};
+
 	Vector() : _size(0), _capacity(0), _data(nullptr) {}
+
 	~Vector()
 	{
 		_size = 0;
