@@ -34,6 +34,9 @@ public:
 
 	bool CanGo(Vector pos);
 
+	void BFS(Vector start); // 최단 거리(최소 간선의 개수)
+	void DFS(Vector start);
+
 private:
 	weak_ptr<Maze> _maze;
 
@@ -45,5 +48,9 @@ private:
 
 	// RightHand (우수법)
 	Vector _dir = Vector(0, -1);
+
+	// BFS
+	vector<vector<bool>> _visited = vector<vector<bool>>(MAX_Y, vector<bool>(MAX_X, false));
+	vector<vector<Vector>> _parent;
 };
 

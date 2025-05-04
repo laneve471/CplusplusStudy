@@ -9,7 +9,9 @@ Player::Player(shared_ptr<Maze> maze)
 {
 	_maze.lock()->SetBlockType(_pos, Block::Type::PLAYER);
 
-	RightHand();
+	//RightHand();
+	//BFS(_maze.lock()->StartPos());
+	DFS(_maze.lock()->StartPos());
 }
 
 Player::~Player()
@@ -113,4 +115,92 @@ bool Player::CanGo(Vector pos)
 	if (_maze.lock()->GetBlockType(pos) == Block::Type::BLOCKED)
 		return false;
 	return true;
+}
+
+void Player::BFS(Vector start)
+{
+	_visited = vector<vector<bool>>(MAX_Y, vector<bool>(MAX_X, false));
+	_parent = vector<vector<Vector>>(MAX_Y, vector<Vector>(MAX_X, Vector(-1, -1)));
+
+	queue<Vector> q;
+	q.push(start);
+	_visited[start.y][start.x] = true;
+	_parent[start.y][start.x] = start;
+
+	while (true)
+	{
+		Vector here = q.front();
+		q.pop();
+
+		// 현재 끝점이면 반복 종료
+		if (here == _maze.lock()->EndPos())
+			break;
+
+		for (int i = 0; i < 4; i++)
+		{
+			Vector there = here + frontPos[i];
+
+			// here와 there가 같은가?
+			if (here == there)
+				continue;
+
+			// there가 갈 수 있는 곳인가?
+			if (!CanGo(there))
+				continue;
+
+			// there에 방문한 적 있는가?
+			if (_visited[there.y][there.x])
+				continue;
+
+			q.push(there);
+			_visited[there.y][there.x] = true;
+			_parent[there.y][there.x] = here;
+			_maze.lock()->SetBlockType(there, Block::Type::SEARCHED);
+		}
+	}
+
+	// 끝점이 누구에게서 발견되었는지 타고 올라가기
+	Vector vertex = _maze.lock()->EndPos();
+	_path.push_back(vertex);
+
+	while (true)
+	{
+		// parent가 start 지점이면 그만
+		if (vertex == start)
+			break;
+
+		vertex = _parent[vertex.y][vertex.x];
+		_path.push_back(vertex);
+	}
+	reverse(_path.begin(), _path.end());
+}
+
+void Player::DFS(Vector here)
+{
+	_visited[here.y][here.x] = true;
+	_path.push_back(here);
+
+	for (int i = 0; i < 4; i++)
+	{
+		// 현재 끝점이면 반복 종료
+		if (here == _maze.lock()->EndPos())
+			break;
+
+		Vector there = here + frontPos[i];
+
+		// here와 there가 같은가?
+		if (here == there)
+			continue;
+
+		// there가 갈 수 있는 곳인가?
+		if (!CanGo(there))
+			continue;
+
+		// there에 방문한 적 있는가?
+		if (_visited[there.y][there.x])
+			continue;
+
+		_maze.lock()->SetBlockType(there, Block::Type::SEARCHED);
+		DFS(there);
+	}
 }

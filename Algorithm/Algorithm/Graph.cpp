@@ -69,7 +69,7 @@ void CreateGraph()
 
 	// BFS
 	discovered = vector<bool>(7, false);
-	parent = vector<int>(7, -1);
+	parent = vector<int>(7, -1); // 탐색 경로 역추적
 
 	// DFS
 	visited = vector<bool>(7, false);
